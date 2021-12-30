@@ -1,0 +1,41 @@
+.color-asmira{
+    background-color: #262626;
+}
+.asmira-top-nav-item{
+    width: 33.33%;
+}
+.asmira-top-nav.flex {
+    padding: 14px 0;
+}
+.main-nav-menu-item {
+    color: #666666;
+    text-transform: uppercase;
+}
+.ashima-hero-banner-inner {
+    padding: 16% 8%;
+    width: auto;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.ashima-hero-banner-inner h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.ashima-hero-banner-inner button {
+    background-color: rgba(100,102,105,0);
+    border-width: 1px!important;
+    border-color: #fff;
+    border-radius: 0px;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 1em 3.5em 1em 1.6em;
+    line-height: 1em;
+    color:#fff
+}
