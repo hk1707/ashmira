@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap');
+
+.color-asmira{
+    background-color: #262626;
+}
+.asmira-top-nav-item{
+    width: 33.33%;
+}
+.asmira-top-nav.flex {
+    padding: 14px 0;
+}
+.main-nav-menu-item {
+    color: #666666;
+    text-transform: uppercase;
+}
+.ashima-hero-banner{
+    position: relative;
+}
+.padding-common {
+    padding: 70px 0;
+}
+.ashima-hero-banner::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top: 0;
+    z-index: 0;
+    background-color: rgba(0,0,0,.3);
+}
+.ashima-hero-banner-inner {
+    padding: 16% 8%;
+    width: auto;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    position: relative;
+}
+.ashima-hero-banner-inner h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.ashima-hero-banner-inner button {
+    background-color: rgba(100,102,105,0);
+    border-width: 1px!important;
+    border-color: #fff;
+    border-radius: 0px;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 1em 3.5em 1em 1.6em;
+    line-height: 1em;
+    color:#fff
+}
+.product_item {
+    padding: 0 15px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.product_item .product_item_img {
+    height: 364px;
+    width: 340px;
+    display: flex;
+    justify-content: center;
+    background: #f4f4f4;
+}
+.product_item .product_item_img img {
+    height: 100%;
+}
+.product_list_in {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+.product_list_heading img {
+    margin: 0 auto;
+}
+.product_list_heading {
+    margin-bottom: 20px;
+    padding: 2% 0;
+}
+.product_list_in .product_item h2.product-title {
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Palanquin', sans-serif;
+}
+.product_list_in .slick-slider button.slick-arrow::before {
+    color: #000000;
+}
+.product_list_in .product_item p.product-price {
+    padding-top: 5px;
+}
+.product_list_in .product_item p.product-price,
+.product_list_in .product_item p.product-attr {
+    font-size: 16px;
+    font-family: 'Palanquin';
+}
+.product_list_in .product_item::after{
+    content: "";
+    display: block;
+    width: 75px;
+    border-top: 2px solid #54575a;
+    margin-top: 20px;
+    transition: all 0.25s ease-in-out;
+}
+.product_list_in .product_item:hover:after{
+    width: 100%;
+}
+.ashima-skin-banner {
+    background-color: #f5f5f5f5;
+}
+.ashima-skin-banner-inner {
+    display: flex;
+}
+.ashima-skin-banner-inner > div.ashima-skin-img {
+    width: 55%;
+}
+.ashima-skin-banner-inner > div.ashima-skin-text {
+    width: 45%;
+}
+.ashima-skin-text .ashima-skin-text-in {
+    max-width: 485px;
+    margin: 0 auto;
+    padding: 54px;
+    background: #fff;
+}
+.ashima-skin-text-in h2 {
+    margin-bottom: 20px;
+    font-family: 'Palanquin', sans-serif;
+    color: #54575a;
+    font-size: 34px;
+    font-weight: 300;
+}
+.ashima-skin-text-in p {
+    font-size: 17px;
+    font-family: 'Palanquin';
+    line-height: 28px;
+    padding-bottom: 1em;
+}
+.ashima-skin-text-in p {
+    font-size: 17px;
+    font-family: 'Palanquin',Helvetica,Arial,Lucida,sans-serif;
+    line-height: 28px;
+    padding-bottom: 1em;
+    font-weight: 300;
+    color: #333333;
+}
+a.custom_btn_hk button.btn {
+    color: #54575a;
+    padding: 1em 3.5em 1em 1.6em;
+    line-height: 1em;
+    font-family: 'Palanquin',Helvetica,Arial,Lucida,sans-serif;
+    font-size: 14px;
+    border-radius: unset;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-color: #898b8d;
+    border-radius: 0px;
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,12 +1,12 @@
 import AshmiraNavTop from "./AshmiraNavTop";
-import AshmiraMainNav from "./AshmiraMainNav";
+import AshmiraMainNav from "./Menu";
 
 const Header = () => {
 	return (
-		<div className="header">
+		<header className="header" suppressHydrationWarning={true} >
 			<AshmiraNavTop />
 			<AshmiraMainNav />
-		</div>
+		</header>
 	)
 };
 

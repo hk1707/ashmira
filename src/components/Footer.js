@@ -1,7 +1,7 @@
 import {Facebook, Instagram, Twitter, Youtube} from "./icons";
 
 const Footer = () => (
-	<div className="footer bg-gray-800 p-6 text-white">
+	<footer className="footer bg-gray-800 p-6 text-white">
 		<div className="container mx-auto">
 			<div className="footer-text flex-none md:flex items-center justify-between">
 				<p>© Codeytek Academy 2020</p>
@@ -15,7 +15,7 @@ const Footer = () => (
 				<li className="ml-2"><a href="https://www.instagram.com/codeytek_academy/" className="fa fa-instagram" target="_blank"><Instagram/></a></li>
 			</ul>
 		</div>
-	</div>
+	</footer>
 );
 
 export default Footer;

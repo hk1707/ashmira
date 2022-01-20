@@ -3,43 +3,53 @@ import Product from "../src/components/Product";
 import client from '../src/components/ApolloClient';
 import ParentCategoriesBlock from "../src/components/category/category-block/ParentCategoriesBlock";
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
+import HOME_PAGE from '../graphql_query/wp_graphql';
 import HeroCarousel from "../src/components/home/hero-carousel";
-import Herobanner from "../src/components/sections/Herobanner";
+import Home_NEW from "../src/components/Home";
+import { useQuery } from '@apollo/client';
 
 
-export default function Home (props) {
+export default function Home(props) {
 
 	const { products, productCategories, heroCarousel } = props || {};
 
+	const { data, loading, error } = useQuery(HOME_PAGE, {
+		variables: { ids: 2 }
+	});
+
+	const acfhome = data?.page?.homePage ? data?.page?.homePage : null;
+
 	return (
-			<Layout>
-				{/*Hero Carousel*/}
-				<Herobanner />
-				<HeroCarousel heroCarousel={heroCarousel}/>
-				{/*Categories*/ }
-				<div className="product-categories-container container mx-auto my-32 px-4 xl:px-0">
+		<Layout>
+			{/*Home page*/}
+			<Home_NEW acfhome={acfhome} />
+
+			<HeroCarousel heroCarousel={heroCarousel} />
+
+			{/*Categories*/}
+			{/* <div className="product-categories-container container mx-auto my-32 px-4 xl:px-0">
 					<h2 className="main-title text-xl mb-5 uppercase"><span className="main-title-inner">Categories</span></h2>
 					<ParentCategoriesBlock productCategories={ productCategories }/>
-				</div>
-				{/*Products*/ }
-				<div className="products container mx-auto my-32 px-4 xl:px-0">
+				</div> */}
+			{/*Products*/}
+			{/* <div className="products container mx-auto my-32 px-4 xl:px-0">
 					<h2 className="products-main-title main-title mb-5 text-xl uppercase"><span className="main-title-inner">Products</span></h2>
 					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
 						{ products.length ? (
 							products.map( product => <Product key={ product.id } product={ product }/> )
 						) : '' }
 					</div>
-				</div>
+				</div> */}
 
-			</Layout>
+		</Layout>
 	)
 };
 
-export async function getStaticProps () {
+export async function getStaticProps() {
 
-	const { data } = await client.query( {
+	const { data } = await client.query({
 		query: PRODUCTS_AND_CATEGORIES_QUERY,
-	} );
+	});
 
 	return {
 		props: {

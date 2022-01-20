@@ -15,14 +15,12 @@ const Layout = (props) => {
   return (
     <AppProvider>
       <ApolloProvider client={client}>
-        <div>
           <Head>
-            <title>Woocommerce React Theme</title>
+            <title>Ashmira Botanica | Luxury Wax Skincare</title>
           </Head>
           <Header />
           {props.children}
           <Footer />
-        </div>
       </ApolloProvider>
     </AppProvider>
   );
