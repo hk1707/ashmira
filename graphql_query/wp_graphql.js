@@ -73,8 +73,70 @@ query MyQuery($ids:ID!) {
         }
       }
     }
-  }
-  
-`;
+    posts(first: 3) {
+      nodes {
+        authorId
+        id
+        postId
+        slug
+        title
+        content
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+            srcSet
+            uri
+          }
+        }
+        featuredImageId
+        status
+        }
+      }
+      products(first: 10) {
+        nodes {
+          id
+          productId: databaseId
+          averageRating
+          slug
+          description
+          image {
+            id
+            altText
+            sourceUrl
+          }
+          name
+          ... on SimpleProduct {
+            price
+            regularPrice
+            id
+          }
+          ... on VariableProduct {
+            price
+            id
+            regularPrice
+          }
+          ... on ExternalProduct {
+            price
+            id
+            externalUrl
+            regularPrice
+          }
+          ... on GroupProduct {
+            id
+            products {
+              nodes {
+                ... on SimpleProduct {
+                  id
+                  price
+                  regularPrice
+                }
+              }
+            }
+          }
+        }
+      }
+
+  }`;
 
 export default HOME_PAGE;

@@ -305,6 +305,16 @@ a.custom_btn_hk button.btn {
     color: #54575a;
     font-family: 'Palanquin',Helvetica,Arial,Lucida,sans-serif;
 }
+.news_section.home_post_list .home_post_item .news_section_img {
+    height: 325px;
+    height: 407px;
+}
+.product_list_in.home_post_list .home_post_item .home_post_content {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 .clean-beauty-section-text p {
     font-weight: 300;
     text-align: left;
@@ -387,6 +397,10 @@ a.custom_btn_hk button.btn {
     padding-bottom: 1em;
     font-weight: 300;
     color: #333333;
+}
+.contacterrormsg {
+    color: red;
+    padding: 15px 0;
 }
 /* a.custom_btn_hk button.btn {
     color: #54575a;

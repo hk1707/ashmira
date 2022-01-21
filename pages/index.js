@@ -16,15 +16,17 @@ export default function Home(props) {
 	const { data, loading, error } = useQuery(HOME_PAGE, {
 		variables: { ids: 2 }
 	});
-
+	console.log(data);
 	const acfhome = data?.page?.homePage ? data?.page?.homePage : null;
+	const postData = data?.posts ? data?.posts : null;
+	const productData = data?.products ? data?.products : null;
 
 	return (
 		<Layout>
 			{/*Home page*/}
-			<Home_NEW acfhome={acfhome} />
+			<Home_NEW acfhome={acfhome} postData={postData} productData={productData} />
 
-			<HeroCarousel heroCarousel={heroCarousel} />
+			{/* <HeroCarousel heroCarousel={heroCarousel} /> */}
 
 			{/*Categories*/}
 			{/* <div className="product-categories-container container mx-auto my-32 px-4 xl:px-0">

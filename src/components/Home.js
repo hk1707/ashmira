@@ -11,14 +11,17 @@ import FooterTop from "./sections/FooterTop";
 
 
 
-const Home_NEW = ({ acfhome }) => {
+const Home_NEW = ({ acfhome , postData , productData }) => {
+
+	const postItem = postData?.nodes ? postData?.nodes:null;
+	const productItem = productData?.nodes ? productData?.nodes:null;
 	const data = acfhome;
 	return (
 		<>	
 			{/*Hero Banner Section*/}
 			{data?.homeBanner && data?.bannerTitle && (<Herobanner data={data} />)}
 			{/*Hero Product Carousel Section*/}
-			{data?.bestSellersLogo && data?.bestSellersTitle && (<Product_Carousel data={data} />)}
+			{data?.bestSellersTitle && (<Product_Carousel data={data} productItem={productItem}/>)}
 			{/*Home Skin Care Section*/}
 			{data?.skincareImage && data?.skincareTitle && (<HomeSkincare data={data} />)}
 			{/*Home Why Ashmira Section*/}
@@ -28,7 +31,7 @@ const Home_NEW = ({ acfhome }) => {
 			{/*Home Silky Smooth Section*/}
 			{data?.silkySmoothDescription && data?.silkySmoothTitle && (<SilkySmooth data={data} />)}
 			{/*Home Our News Section*/}
-			{data?.ourNewsTitle && (<OurNews data={data} />)}
+			{data?.ourNewsTitle && (<OurNews data={data} postItem={postItem} />)}
 			{/*Home Our Spa Partners Section*/}
 			{data?.ourSpaPartnersTitle && data?.ourSpaPartnersLogoOne?.mediaItemUrl && data?.ourSpaPartnersLogoTwo?.mediaItemUrl && (<OurSpaPartners data={data} />)}
 			{/*Home Get Touch Section*/}

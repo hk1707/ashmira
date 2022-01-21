@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import Link from 'next/link';
 
-
-const Product_Carousel = ({ data }) => {
+const Product_Carousel = ({ data, productItem }) => {
 
   console.log(data);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -52,66 +52,28 @@ const Product_Carousel = ({ data }) => {
             <h3>{data?.bestSellersTitle}</h3>
           </>)
         }
-        
+
       </div>
       <div className="product_list_in">
         <Slider {...settings}>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Purifying Skin Spritz 100ml</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£18.00</p>
-          </div>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Replenishing Body Lotion 240ml</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£20.00</p>
-          </div>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Replenishing Body Lotion 500ml</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£28.00</p>
-          </div>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Clay Gift Set Fire</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£30.00</p>
-          </div>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Replenishing Body Lotion 500ml</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£25.00</p>
-          </div>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Clay Gift Set Fire 1</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£30.00</p>
-          </div>
-          <div className="product_item">
-            <div className="product_item_img">
-              <img src="https://www.ashmirabotanica.com/wp-content/uploads/2021/06/Refreshing-skin-cleanser-500ml-345x503.png" />
-            </div>
-            <h2 className="product-title">Clay Gift Set Fire 3</h2>
-            <p className="product-attr">500ml</p>
-            <p className="product-price">£24.00</p>
-          </div>
+          {productItem?.map(function (item, idx) {
+            return (
+              <div className="product_item" key={idx} >
+                <Link href={`product/${item?.slug && (item?.slug) ? item?.slug : "#"}`}>
+                  <a>
+                    <div className="product_item_img">
+                      {
+                        item.image?.sourceUrl && (<img src={item.image?.sourceUrl} />)
+                      }
+                    </div>
+                    <h2 className="product-title">{item.name}</h2>
+                    <p className="product-attr">500ml</p>
+                    <p className="product-price">{item.price}</p>
+                  </a>
+                </Link>
+              </div>
+            )
+          })}
         </Slider>
       </div>
     </div>
