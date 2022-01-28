@@ -10,7 +10,7 @@ const Nav = ( props ) => {
 	const router = useRouter(); 
 
 	return (
-		<div className="bg-white p-4 main-nav-menu">
+		<div className="bg-white main-nav-menu">
 			<div className="flex items-center justify-between flex-wrap container mx-auto">
 
 				{/*Menu button*/}
@@ -23,17 +23,37 @@ const Nav = ( props ) => {
 				{/*MMenu in mobile*/}
 				<div className={`${ isMenuVisible ? 'max-h-full h-full' : 'h-0' } w-full main-nav-menu-inner overflow-hidden lg:h-full flex-grow lg:flex lg:items-center lg:w-auto`}>
 					<div className="text-sm text-center font-medium uppercase lg:flex-grow">
-					
+					<ul className="main_nav main_nav_container">
 					{
-						menuitems.map( item => 
+						menuitems?.map( item => 
+						<li className='main_nav_item' key={item.node.id}>
 						<Link href={item.node.path} key={item.node.id}>
-							<a className="block mt-4 main-nav-menu-item lg:inline-block lg:mt-0 text-gray hover:text-black mr-10">
+							<a className="block mt-4 main-nav-menu-item lg:inline-block lg:mt-0 text-gray hover:text-black m-0 p-4">
 								{item.node.label}
 							</a>
 						</Link>
+						
+						{ item.node?.childItems?.nodes.length > 0 && (
+							<ul className="sub_nav sub_nav_container">
+							{
+								item.node?.childItems?.nodes?.map( itemc => 
+								<li className='main_nav_item' key={itemc.id} >
+								<Link href={itemc.path} key={itemc.id}>
+									<a className="block mt-4 main-nav-menu-item lg:inline-block lg:mt-0 text-gray hover:text-black m-0">
+										{itemc.label}
+									</a>
+								</Link>
+								</li>
+	
+								)
+							}
+							</ul>
+						)}
+						</li>
 
 						)
 					}
+					</ul>
 					</div>
 				</div>
 

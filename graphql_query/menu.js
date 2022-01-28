@@ -1,35 +1,38 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
-const MENU_QUERY =gql`query{
+const MENU_QUERY = gql`
+  query {
     menus {
-        nodes {
+      nodes {
         id
         locations
         name
         slug
         count
-        menuItems {
-            edges {
+        menuItems(where: { parentDatabaseId: 0 }) {
+          edges {
             node {
-                id
-                title
-                label
-                path
-                parentId
-                childItems {
-                edges {
-                    node {
-                    id
-                    label
-                    title
-                    path
-                    }
+              id
+              parentDatabaseId
+              title
+              label
+              path
+              parentId
+              childItems {
+                nodes {
+                  id
+                  parentDatabaseId
+                  title
+                  label
+                  path
+                  parentId
                 }
-                }
+              }
             }
-            }
+          }
         }
-        }
+      }
     }
-}`;
+  }
+`;
 export default MENU_QUERY;

@@ -54,10 +54,18 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
   `;
 
 export const PRODUCT_CATEGORIES_SLUGS = gql` query PRODUCT_CATEGORIES_SLUGS {
-    productCategories {
-    nodes {
-      id
-      slug
-    }
-  }
-}`;
+	productCategories {
+	  nodes {
+		id
+		slug
+		uri
+		children {
+		  nodes {
+			id
+			slug
+			uri
+		  }
+		}
+	  }
+	}
+  }`;

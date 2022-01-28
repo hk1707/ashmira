@@ -1,7 +1,7 @@
 import Layout from "../../src/components/Layout";
 import client from "../../src/components/ApolloClient";
 import Product from "../../src/components/Product";
-import {PRODUCT_BY_CATEGORY_SLUG, PRODUCT_CATEGORIES_SLUGS} from "../../src/queries/product-by-category";
+import {PRODUCT_BY_CATEGORY_SLUG, PRODUCT_CATEGORIES_SLUGS} from "../../src/queries/product-by-multiplecat";
 import {isEmpty} from "lodash";
 import {useRouter} from "next/router";
 
@@ -15,7 +15,9 @@ export default function CategorySingle( props ) {
         return <div>Loading...</div>
     }
 
-    const { categoryName, products } = props;
+    const { categoryName, products ,productsnew } = props;
+
+    console.log(productsnew)
 
     return (
         <Layout>
@@ -33,17 +35,24 @@ export default function CategorySingle( props ) {
 
 export async function getStaticProps(context) {
 
-    const {params: { slug }} = context
+    const { params:{ child } } = context
 
     const {data} = await client.query(({
         query: PRODUCT_BY_CATEGORY_SLUG,
-        variables: { slug }
+        variables: { "slug":child }
     }));
 
+
+    const products =  data?.productCategories?.nodes &&  data?.productCategories?.nodes.map((product) => product.products.nodes   )
+
+    console.log(products);
+
+  
     return {
         props: {
-            categoryName: data?.productCategory?.name ?? '',
-            products: data?.productCategory?.products?.nodes ?? []
+            categoryName: data?.productCategories?.nodes?.name ?? '',
+            products: data?.productCategories?.nodes ?? '',
+            productsnew: products ?? []
         },
         revalidate: 1
     }
@@ -55,16 +64,21 @@ export async function getStaticPaths () {
         query: PRODUCT_CATEGORIES_SLUGS
     })
 
-    const pathsData = []
+    
+    const paths = [];
 
     data?.productCategories?.nodes && data?.productCategories?.nodes.map((productCategory) => {
         if (!isEmpty(productCategory?.slug)) {
-            pathsData.push({ params: { slug: productCategory?.slug } })
+            if(productCategory?.children?.nodes?.length > 0){  
+                 const paths = productCategory?.children?.nodes && productCategory?.children?.nodes.map(CatChild => ({
+                    params: {slug: CatChild?.slug }
+                  }))
+            }
         }
-    })
+    })   
 
     return {
-        paths: pathsData,
+        paths: paths ,
         fallback: true
     }
 }

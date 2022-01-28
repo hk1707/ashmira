@@ -17,6 +17,10 @@ const Layout = (props) => {
       <ApolloProvider client={client}>
           <Head>
             <title>Ashmira Botanica | Luxury Wax Skincare</title>
+            <link rel="icon" href="/ashmira-botanica-favicon.png" sizes="32x32" />
+            <link rel="icon" href="/ashmira-botanica-favicon.png" sizes="192x192" />
+            <link rel="apple-touch-icon" href="/ashmira-botanica-favicon.png" />
+            <meta name="msapplication-TileImage" content="/ashmira-botanica-favicon.png" />
           </Head>
           <Header />
           {props.children}
